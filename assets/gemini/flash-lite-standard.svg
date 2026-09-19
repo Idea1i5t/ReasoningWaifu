@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" role="img" aria-labelledby="title desc">
+<title id="title">Flash-Lite — STANDARD</title><desc id="desc">Development placeholder: 像素形态. Transparent background, no continuous animation.</desc>
+<text x="32" y="49" font-family="sans-serif" font-size="13" letter-spacing="3" fill="#7bdcb5">GEMINI / 01</text>
+<g shape-rendering="crispEdges"><path d="M140 190h120v100H140z" fill="#7bdcb5"/><path d="M150 175h100v20H150zM130 195h20v75h-20zM250 195h20v75h-20z" fill="#294755"/><path d="M155 205h90v60h-90z" fill="#edf5f4"/><path d="M168 225h12v13h-12zM220 225h12v13h-12zM190 249h20v5h-20z" fill="#152233"/><path d="M160 285h80v72h-80zM145 290h15v50h-15zM240 290h15v50h-15zM164 357h23v25h-23zM213 357h23v25h-23z" fill="#7bdcb5"/><path d="M183 295h34v34h-34z" fill="#edf5f4"/></g>
+<rect x="63" y="423" width="274" height="62" rx="16" fill="#111a2c" stroke="#7bdcb5" stroke-opacity=".35"/>
+<text x="200" y="449" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f0f3ff">Flash-Lite</text>
+<text x="200" y="470" text-anchor="middle" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#7bdcb5">STANDARD</text>
+</svg>

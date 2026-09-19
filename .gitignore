@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.tools/
+.test-output/
+*.log
+.DS_Store
+/local_dev

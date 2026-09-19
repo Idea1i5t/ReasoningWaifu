@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ReasoningWaifu 显示测试</title>
+<style>
+body{margin:0;background:#15171d;color:#e3e6ef;font:16px system-ui}header{padding:12px;position:relative;z-index:3;background:#262a35}label{margin-right:16px}select{margin:4px;padding:5px}output{display:inline-block;color:#a6e4ce}chat-window{display:block}.chat-container{position:relative;height:calc(100vh - 96px);min-height:480px;margin-left:80px}h1{text-align:center;padding-top:48px;font-size:24px}input-area-v2{display:block;position:absolute;top:160px;left:50%;transform:translateX(-50%);width:min(660px,calc(100% - 32px));z-index:2}.input-area{padding:18px;border-radius:20px;background:#303440;display:flex;gap:12px}[contenteditable]{flex:1;min-height:32px}button{border:0;background:#454d60;color:white;border-radius:12px;padding:8px}.conversation input-area-v2{top:auto;bottom:24px}.conversation h1{font-size:18px}p{text-align:center;color:#9da9bd}a{color:#a9c6ff}
+</style>
+<header>仅本地显示测试，不是插件设置。<br>
+<label>模型<select id="model"><option>3.5 Flash-Lite</option><option>3.6 Flash</option><option>3.1 Pro</option><option>Unknown</option></select></label>
+<label>思考<select id="thinking"><option>Standard</option><option>Extended</option><option>Unknown</option></select></label>
+<label>页面<select id="page"><option value="welcome">欢迎页</option><option value="chat">聊天页</option></select></label>
+<output></output></header>
+<chat-window><div class="chat-container"><h1>共享显示器与 Gemini 控件结构测试</h1><p>可以切换测试状态，并在下方输入文字确认图片不拦截操作。</p>
+<input-area-v2><div class="input-area is-zero-state"><div contenteditable="true" role="textbox" aria-label="测试输入框">这里可以输入</div><bard-mode-switcher><button data-test-id="bard-mode-menu-button" aria-label="打开模式选择器，当前模式为“Flash-Lite”"><span data-test-id="logo-pill-label-container"><span class="picker-primary-text">Flash-Lite</span></span></button></bard-mode-switcher></div></input-area-v2>
+</div></chat-window><script src="/smoke.js"></script></html>

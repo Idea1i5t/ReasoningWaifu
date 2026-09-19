@@ -1,0 +1,26 @@
+{
+  "name": "reasoning-waifu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Gemini character background extension — local MVP",
+  "engines": {
+    "node": ">=24.21.0 <25"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "check": "npm run typecheck && npm test",
+    "preview": "node scripts/preview.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.3.0",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

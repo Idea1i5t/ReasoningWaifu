@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "ReasoningWaifu (Development)",
+  "version": "0.1.0",
+  "description": "Local character backgrounds for Gemini. Unknown selections use a mystery character.",
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/gemini/flash-lite-standard.svg",
+        "assets/gemini/flash-lite-extended.svg",
+        "assets/gemini/flash-standard.svg",
+        "assets/gemini/flash-extended.svg",
+        "assets/gemini/pro-standard.svg",
+        "assets/gemini/pro-extended.svg",
+        "assets/gemini/unknown.svg"
+      ],
+      "matches": ["https://gemini.google.com/*"]
+    }
+  ]
+}
