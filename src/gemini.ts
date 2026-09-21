@@ -1,5 +1,5 @@
-import { readPicker, placeCharacter } from './state';
-import type { AssetKey, Placement } from './state';
+import { readPicker, placeCharacter, artworkKey } from './state';
+import type { ArtworkKey, Placement } from './state';
 
 // Observed on the real Gemini page on 2026-09-20. No hashed Angular classes.
 const MODE = '[data-test-id="bard-mode-menu-button"]';
@@ -14,7 +14,7 @@ function visible(element: HTMLElement): boolean {
 
 export interface Snapshot {
   parent: HTMLElement;
-  key: AssetKey;
+  key: ArtworkKey;
   placement: Placement;
 }
 
@@ -30,12 +30,25 @@ export function readSnapshot(): Snapshot | null {
     label?.querySelector('.picker-secondary-text')?.textContent ?? null,
     mode[0]!.getAttribute('aria-label') ?? '',
   );
-  const welcome = input.querySelector('.input-area')?.classList.contains('is-zero-state') === true;
+  const inputBox = input.querySelector<HTMLElement>('.input-area');
+  const welcome = inputBox?.classList.contains('is-zero-state') === true;
+  // The outer input host can span the chat width to paint a bottom gradient.
+  // Place the character beside the actual box, not that decorative backdrop.
+  const composer = !welcome && inputBox && visible(inputBox) ? inputBox : input;
   const placement = placeCharacter(
     { width: innerWidth, height: innerHeight }, parent.getBoundingClientRect(),
-    input.getBoundingClientRect(), welcome,
+    composer.getBoundingClientRect(), welcome, key,
   );
-  return placement ? { parent, key, placement } : null;
+  if (placement?.aboveInput) {
+    // Share the chat parent with the composer and sit above its ancestor layers.
+    let composerZIndex = 0;
+    for (let element: HTMLElement | null = composer; element && element !== parent; element = element.parentElement) {
+      const zIndex = Number.parseInt(getComputedStyle(element).zIndex, 10);
+      if (Number.isFinite(zIndex)) composerZIndex = Math.max(composerZIndex, zIndex);
+    }
+    placement.zIndex = composerZIndex + 1;
+  }
+  return placement ? { parent, key: artworkKey(key, welcome), placement } : null;
 }
 
 export function observeGemini(onChange: () => void): () => void {

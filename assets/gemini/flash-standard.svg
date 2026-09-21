@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" role="img" aria-labelledby="title desc">
-<title id="title">Flash — STANDARD</title><desc id="desc">Development placeholder: 战斗形态. Transparent background, no continuous animation.</desc>
-<text x="32" y="49" font-family="sans-serif" font-size="13" letter-spacing="3" fill="#80b9ff">GEMINI / 03</text>
-<path d="M128 234c-7-98 151-115 145 0l-7 75-32-35-74 1-35 34z" fill="#80b9ff"/><ellipse cx="200" cy="223" rx="53" ry="56" fill="#f0f3ff"/><path d="M145 210q0-67 77-47l36 51-43-15-22-27-15 34z" fill="#80b9ff"/><path d="M170 225h15M216 225h15M191 249q10 7 19 0" stroke="#18223b" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M172 278h56l42 79H130z" fill="#80b9ff"/><path d="M181 282l19 21 19-21-6 63h-26z" fill="#f0f3ff"/><path d="M160 289l-30 52M240 289l30 52M180 358l-7 35M220 358l7 35" stroke="#80b9ff" stroke-width="16" stroke-linecap="round"/>
-<rect x="63" y="423" width="274" height="62" rx="16" fill="#111a2c" stroke="#80b9ff" stroke-opacity=".35"/>
-<text x="200" y="449" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f0f3ff">Flash</text>
-<text x="200" y="470" text-anchor="middle" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#80b9ff">STANDARD</text>
-</svg>

@@ -1,7 +1,26 @@
+# Dependencies, generated builds and local tooling
 node_modules/
 dist/
 .tools/
 .test-output/
+
+# Private planning, source artwork, drafts, prompts and editing records
+/local_dev/
+/art_source/
+/.agents/
+/.codex/
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+!.env.sample
+/.npmrc.local
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs and operating-system files
 *.log
 .DS_Store
-/local_dev

@@ -1,23 +1,30 @@
-import type { AssetKey, Placement } from './state';
+import type { ArtworkKey, Placement } from './state';
 
 export class CharacterRenderer {
   private readonly host = document.createElement('div');
   private readonly stage: HTMLDivElement;
   private readonly motion = matchMedia('(prefers-reduced-motion: reduce)');
-  private target: AssetKey | null = null;
+  private target: ArtworkKey | null = null;
+  private backgroundParent: HTMLElement | null = null;
+  private readonly layerStyle = document.createElement('style');
   private revision = 0;
   private timer: ReturnType<typeof setTimeout> | undefined;
   private cancelLoad: (() => void) | undefined;
 
-  constructor(private readonly assetUrl: (key: AssetKey) => string) {
+  constructor(private readonly assetUrl: (key: ArtworkKey) => string) {
+    // Isolate the negative-z decoration above the container's own background,
+    // but below all existing page content, including the composer.
+    this.layerStyle.textContent = '.reasoning-waifu-background-context { isolation:isolate !important; }';
     this.host.id = 'reasoning-waifu-root';
     this.host.setAttribute('aria-hidden', 'true');
-    this.host.style.cssText = 'all:initial;position:fixed;display:none;pointer-events:none;z-index:0;';
+    // Keep off-screen artwork inside a viewport-sized clipping layer. This lets
+    // edge poses peek in without widening the document or intercepting input.
+    this.host.style.cssText = 'all:initial;position:fixed;inset:0;overflow:hidden;display:none;pointer-events:none;z-index:0;';
     const shadow = this.host.attachShadow({ mode: 'open' });
     const style = document.createElement('style');
     style.textContent = `
       :host { pointer-events: none !important; user-select: none !important; }
-      .stage { width:100%; aspect-ratio:400/520; position:relative; pointer-events:none; }
+      .stage { position:absolute; pointer-events:none; }
       img { position:absolute; inset:0; display:block; width:100%; height:100%;
         object-fit:contain; opacity:0; transition:opacity 200ms ease; pointer-events:none; }
       img.visible { opacity:1; }
@@ -29,12 +36,25 @@ export class CharacterRenderer {
     shadow.append(style, this.stage);
   }
 
-  update(parent: HTMLElement, key: AssetKey, placement: Placement): void {
+  update(parent: HTMLElement, key: ArtworkKey, placement: Placement): void {
+    if (this.backgroundParent && (this.backgroundParent !== parent || !placement.background)) {
+      this.backgroundParent.classList.remove('reasoning-waifu-background-context');
+      this.backgroundParent = null;
+    }
+    if (placement.background) {
+      if (!this.layerStyle.isConnected) document.head.append(this.layerStyle);
+      parent.classList.add('reasoning-waifu-background-context');
+      this.backgroundParent = parent;
+    } else this.layerStyle.remove();
     if (this.host.parentElement !== parent) parent.append(this.host);
     Object.assign(this.host.style, {
-      display: 'block', left: `${placement.left}px`, top: `${placement.top}px`,
-      width: `${placement.width}px`, height: `${placement.width * 520 / 400}px`,
+      display: 'block',
+      zIndex: placement.background ? '-1' : String(placement.zIndex ?? 0),
       opacity: String(placement.opacity),
+    });
+    Object.assign(this.stage.style, {
+      left: `${placement.left}px`, top: `${placement.top}px`,
+      width: `${placement.width}px`, height: `${placement.height}px`,
     });
     if (key === this.target) return;
     this.cancelLoad?.();
@@ -47,7 +67,7 @@ export class CharacterRenderer {
     this.load(key, revision);
   }
 
-  private load(key: AssetKey, revision: number): void {
+  private load(key: ArtworkKey, revision: number): void {
     const image = new Image();
     image.alt = '';
     image.draggable = false;
@@ -59,7 +79,7 @@ export class CharacterRenderer {
       if (settled || revision !== this.revision) return;
       settled = true;
       cleanup();
-      if (key !== 'unknown') this.load('unknown', revision);
+      if (!key.startsWith('unknown-')) this.load(key.endsWith('-welcome') ? 'unknown-welcome' : 'unknown-chat', revision);
       else { this.stage.replaceChildren(); this.host.style.display = 'none'; }
     };
     image.onerror = fail;
@@ -88,6 +108,9 @@ export class CharacterRenderer {
     this.cancelLoad?.();
     clearTimeout(this.timer);
     this.target = null;
+    this.backgroundParent?.classList.remove('reasoning-waifu-background-context');
+    this.backgroundParent = null;
+    this.layerStyle.remove();
     this.stage.replaceChildren();
     this.host.remove();
   }

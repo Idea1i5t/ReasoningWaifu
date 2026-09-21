@@ -32,7 +32,8 @@ const server = createServer(async (request, response) => {
   try {
     const body = await readFile(resolve(root, file));
     response.writeHead(200, {
-      'Content-Type': file.endsWith('.svg') ? 'image/svg+xml' : 'text/html; charset=utf-8',
+      'Content-Type': file.endsWith('.svg') ? 'image/svg+xml'
+        : file.endsWith('.png') ? 'image/png' : 'text/html; charset=utf-8',
       'Cache-Control': 'no-store',
       'X-Content-Type-Options': 'nosniff',
     });
@@ -42,4 +43,4 @@ const server = createServer(async (request, response) => {
   }
 });
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });
-server.listen(4173, '127.0.0.1', () => console.info('Placeholder preview: http://127.0.0.1:4173'));
+server.listen(4173, '127.0.0.1', () => console.info('Artwork preview: http://127.0.0.1:4173'));

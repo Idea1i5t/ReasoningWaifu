@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" role="img" aria-labelledby="title desc">
-<title id="title">Flash — EXTENDED</title><desc id="desc">Development placeholder: 装备展开. Transparent background, no continuous animation.</desc>
-<text x="32" y="49" font-family="sans-serif" font-size="13" letter-spacing="3" fill="#a6a1ff">GEMINI / 04</text>
-<circle cx="200" cy="245" r="133" fill="none" stroke="#a6a1ff" stroke-opacity=".28" stroke-width="2" stroke-dasharray="8 10"/><path d="M200 91v23M200 377v23M46 245h23M331 245h23" stroke="#a6a1ff" stroke-width="4"/><path d="M128 234c-7-98 151-115 145 0l-7 75-32-35-74 1-35 34z" fill="#a6a1ff"/><ellipse cx="200" cy="223" rx="53" ry="56" fill="#f0f3ff"/><path d="M145 210q0-67 77-47l36 51-43-15-22-27-15 34z" fill="#a6a1ff"/><path d="M170 225h15M216 225h15M191 249q10 7 19 0" stroke="#18223b" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M172 278h56l42 79H130z" fill="#a6a1ff"/><path d="M181 282l19 21 19-21-6 63h-26z" fill="#f0f3ff"/><path d="M160 289l-30 52M240 289l30 52M180 358l-7 35M220 358l7 35" stroke="#a6a1ff" stroke-width="16" stroke-linecap="round"/><path d="M120 255l-49-29 23 89 39-28M280 255l49-29-23 89-39-28" fill="#a6a1ff" fill-opacity=".5"/><ellipse cx="200" cy="148" rx="68" ry="16" fill="none" stroke="#a6a1ff" stroke-width="6"/>
-<rect x="63" y="423" width="274" height="62" rx="16" fill="#111a2c" stroke="#a6a1ff" stroke-opacity=".35"/>
-<text x="200" y="449" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f0f3ff">Flash</text>
-<text x="200" y="470" text-anchor="middle" font-family="sans-serif" font-size="11" letter-spacing="2" fill="#a6a1ff">EXTENDED</text>
-</svg>

@@ -1,10 +1,11 @@
 import { observeGemini, readSnapshot } from './gemini';
 import { CharacterRenderer } from './renderer';
+import { assetPath } from './state';
 
 // Private to the content script's isolated execution environment.
 const scope = globalThis as typeof globalThis & { __reasoningWaifuDispose?: () => void };
 scope.__reasoningWaifuDispose?.();
-const renderer = new CharacterRenderer(key => chrome.runtime.getURL(`assets/gemini/${key}.svg`));
+const renderer = new CharacterRenderer(key => chrome.runtime.getURL(assetPath(key)));
 const update = () => {
   try {
     const snapshot = readSnapshot();

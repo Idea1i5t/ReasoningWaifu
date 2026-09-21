@@ -3,12 +3,29 @@
 <title>ReasoningWaifu 显示测试</title>
 <style>
 body{margin:0;background:#15171d;color:#e3e6ef;font:16px system-ui}header{padding:12px;position:relative;z-index:3;background:#262a35}label{margin-right:16px}select{margin:4px;padding:5px}output{display:inline-block;color:#a6e4ce}chat-window{display:block}.chat-container{position:relative;height:calc(100vh - 96px);min-height:480px;margin-left:80px}h1{text-align:center;padding-top:48px;font-size:24px}input-area-v2{display:block;position:absolute;top:160px;left:50%;transform:translateX(-50%);width:min(660px,calc(100% - 32px));z-index:2}.input-area{padding:18px;border-radius:20px;background:#303440;display:flex;gap:12px}[contenteditable]{flex:1;min-height:32px}button{border:0;background:#454d60;color:white;border-radius:12px;padding:8px}.conversation input-area-v2{top:auto;bottom:24px}.conversation h1{font-size:18px}p{text-align:center;color:#9da9bd}a{color:#a9c6ff}
+/* Reproduce Gemini's full-width composer backdrop around the actual input box. */
+.conversation input-area-v2{left:0;right:0;transform:none;width:auto;padding:24px 0;background:linear-gradient(transparent,#050609 65%)}
+.conversation .input-area{width:min(624px,calc(100% - 68px));margin-inline:auto}
+.layout-editor{position:fixed;left:12px;top:90px;z-index:10;max-width:310px;padding:10px;border-radius:12px;background:#262a35;box-shadow:0 4px 20px #0006;font-size:13px}.layout-editor summary{cursor:pointer}.layout-editor label{display:flex;align-items:center;justify-content:space-between;margin:6px 0;gap:8px}.layout-editor input,.layout-editor select{width:150px;box-sizing:border-box}.layout-editor textarea{box-sizing:border-box;width:100%;height:150px;font:11px monospace}.layout-editor p{text-align:left;margin:8px 0}
 </style>
 <header>仅本地显示测试，不是插件设置。<br>
-<label>模型<select id="model"><option>3.5 Flash-Lite</option><option>3.6 Flash</option><option>3.1 Pro</option><option>Unknown</option></select></label>
+<label>模型<select id="model"><option>3.5 Flash-Lite</option><option>3.8 Flash</option><option>3.1 Pro</option><option>Unknown</option></select></label>
 <label>思考<select id="thinking"><option>Standard</option><option>Extended</option><option>Unknown</option></select></label>
 <label>页面<select id="page"><option value="welcome">欢迎页</option><option value="chat">聊天页</option></select></label>
 <output></output></header>
+<details class="layout-editor"><summary>单图布局调节（仅本地预览）</summary>
+<p id="artwork-name"></p>
+<label>定位<select id="art-anchor"><option value="center">聊天区域居中</option><option value="beside-input">输入框右侧</option><option value="below-input">输入框下方靠右</option><option value="viewport-right">贴网页右边缘</option></select></label>
+<label>最大宽度 px<input id="art-width" type="number" min="100" step="any"></label>
+<label>缩放倍数<input id="art-scale" type="number" min="0.05" step="any"></label>
+<label>左右偏移 px<input id="art-x" type="number" step="any"></label>
+<label>上下偏移 px<input id="art-y" type="number" step="any"></label>
+<label>不透明度<input id="art-opacity" type="number" min="0" max="1" step="any"></label>
+<label>图层<select id="art-layer"><option value="background">页面内容后方</option><option value="page">普通页面层</option><option value="above-input">输入框上方</option></select></label>
+<button id="art-reset" type="button">恢复该图配置</button>
+<p>正偏移向右／向下。修改只影响当前预览；刷新会恢复。将下列条目复制到 src/artworks.ts 可保存。</p>
+<label style="display:block">当前配置<textarea id="art-config" readonly></textarea></label>
+</details>
 <chat-window><div class="chat-container"><h1>共享显示器与 Gemini 控件结构测试</h1><p>可以切换测试状态，并在下方输入文字确认图片不拦截操作。</p>
 <input-area-v2><div class="input-area is-zero-state"><div contenteditable="true" role="textbox" aria-label="测试输入框">这里可以输入</div><bard-mode-switcher><button data-test-id="bard-mode-menu-button" aria-label="打开模式选择器，当前模式为“Flash-Lite”"><span data-test-id="logo-pill-label-container"><span class="picker-primary-text">Flash-Lite</span></span></button></bard-mode-switcher></div></input-area-v2>
 </div></chat-window><script src="/smoke.js"></script></html>

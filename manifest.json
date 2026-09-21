@@ -14,13 +14,18 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "assets/gemini/flash-lite-standard.svg",
-        "assets/gemini/flash-lite-extended.svg",
-        "assets/gemini/flash-standard.svg",
-        "assets/gemini/flash-extended.svg",
-        "assets/gemini/pro-standard.svg",
-        "assets/gemini/pro-extended.svg",
-        "assets/gemini/unknown.svg"
+        "assets/gemini/flash-lite-standard-welcome.png",
+        "assets/gemini/flash-lite-extended-welcome.png",
+        "assets/gemini/flash-lite-standard-chat.png",
+        "assets/gemini/flash-lite-extended-chat.png",
+        "assets/gemini/flash-standard-welcome.png",
+        "assets/gemini/flash-standard-chat.png",
+        "assets/gemini/flash-extended-chat.png",
+        "assets/gemini/flash-extended-welcome.png",
+        "assets/gemini/pro-standard-welcome.png",
+        "assets/gemini/pro-standard-chat.png",
+        "assets/gemini/pro-extended.png",
+        "assets/gemini/unknown.png"
       ],
       "matches": ["https://gemini.google.com/*"]
     }
