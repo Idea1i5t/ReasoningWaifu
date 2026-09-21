@@ -6,7 +6,7 @@ Bring a little companionship to AI chat pages with characters that change with y
 
 ## Getting Started
 
-1. Download the extension ZIP package from this repository's **Releases**.
+1. [Download the extension ZIP (v0.1.0)](https://github.com/Idea1i5t/ReasoningWaifu/releases/download/v0.1.0/ReasoningWaifu-v0.1.0.zip).
 2. Extract the ZIP to a local folder.
 3. Enter `chrome://extensions` in Chrome's address bar to open the extensions page.
 4. Enable **Developer mode** in the top-right corner.

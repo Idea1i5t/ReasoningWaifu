@@ -6,7 +6,7 @@
 
 ## 使用方法
 
-1. 从本仓库的 **Releases** 下载扩展安装包（ZIP）。
+1. [下载扩展安装包（v0.1.0）](https://github.com/Idea1i5t/ReasoningWaifu/releases/download/v0.1.0/ReasoningWaifu-v0.1.0.zip)。
 2. 将安装包解压到本地文件夹。
 3. 在 Chrome 地址栏输入 `chrome://extensions`，或在设置中点击扩展，打开扩展管理页面。
 4. 开启右上角的 **开发者模式**。
